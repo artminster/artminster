@@ -1,0 +1,18 @@
+NOTES ON USING THE PROFILE APP IN A PROJECT
+_______________________________________________________________________________
+1) Create an app in your projects local apps folder, ensuring that the app name is not 'profile'. i.e. - projectname/apps/projectname_profile
+2) Add a reference to 'apps.projectname_profile' in your local projects settings.py
+3) At the very least, create a models.py in this new app and enter the following to start defining custom profile fields:
+
+from artminster.core.apps.profile.models import UserProfile as _UserProfile
+
+class UserProfile(_UserProfile):
+	imdb_profile_link = models.URLField(max_length=255, null=True, blank=True)
+	
+	def __unicode__(self):
+		if self.user.first_name:
+			return "%s %s" % (self.user.first_name, self.user.last_name)
+		else:
+			return self.user.username
+			
+4) Make sure that the AUTH_PROFILE_MODULE variable in your settings.py has been set. I.e. AUTH_PROFILE_MODULE = 'projectname_profile.UserProfile'

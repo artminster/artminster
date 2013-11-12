@@ -1,0 +1,14 @@
+{% extends "ui/layouts/base.html" %}
+{% load common_tags %}
+
+{% block title %}{{subscription.title}} package - cancelled{% endblock %}
+{% block page_title %}Oops, was something wrong?{% endblock %}
+
+{% block content %}
+	<p class="lead">
+		Don't worry - i'm sure you have a good reason for cancelling the subscription. If there's anything we can do to help though, just drop us a line.
+	</p>
+	<p>
+		<a class="btn btn-primary" href="{% url subscription_signup subscription.slug %}">Let me try again!</a>
+	</p>
+{% endblock %}

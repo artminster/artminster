@@ -1,0 +1,5 @@
+CLONING THIS REPO ON YOUR MACHINE AND GETTING STARTED
+_______________________________________________________________________________
+1. Make sure you have an up to date version of the 'artminster' git repository on your machine (OUTSIDE of this project).
+2. From your dev projects root (i.e. where you store all of your dev projects), run the following: sh artminster/proj_clone_bootstrap.sh and follow the instructions
+3. Create a new SECRET_KEY in configs/common/settings.py

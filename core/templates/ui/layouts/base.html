@@ -1,0 +1,98 @@
+{% load cache django_static cms_tags sekizai_tags %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title_outer %}{{settings.PROJECT_SITE_NAME}} | {% block head_title %}{% block title %}{% page_attribute title %}{% endblock %}{% endblock %}{% endblock %}</title>
+        <meta name="viewport" content="width=1010, initial-scale=1.0">
+        <meta name="description" content="{% block site-meta-description %}{% page_attribute meta_description %}{% endblock %}" />
+        <meta name="keywords" content="{% block site-meta-keywords %}{% page_attribute meta_keywords %}{% endblock %}" />
+        <meta name="author" content="">
+        <meta name="robots" content="{% if settings.DEBUG %}nofollow{% else %}index, follow{% endif %}" />
+
+        {% slimall %}
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/chosen.css">
+        <link rel="stylesheet" href="css/bootstrap-responsive.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/development.css">
+        <!--[if IE 7]>
+            <link href="css/font-awesome/font-awesome-ie7.css" rel="stylesheet">
+        <![endif]-->
+        {% endslimall %}
+
+        <!-- IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        {% block extracss %}{% endblock %}
+        {% render_block "css" %}
+        <!-- fav and touch icons -->
+        <link rel="shortcut icon" href="/static/ico/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="/static/ico/apple-touch-icon-57-precomposed.png">
+        {% block extra_head %}{% endblock %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    </head>
+
+    <body>
+        {% slimcontent %}
+        {% include "ui/fragments/header.html" %}
+
+        <div class="container">
+            {% block page_title_outer %}
+            <div class="page-header">
+              <h1>{% block page_title %}{% endblock %}</h1>
+            </div>
+            {% endblock %}
+
+            {% block content_full_width %}{% endblock %}
+
+            <div class="row">
+                <div class="span9">
+                    {% block content %}{% endblock %}
+                </div>
+
+                <div class="span3">
+                    {% block sidebar %}{% endblock %}
+                </div>
+            </div>
+
+            {% include "ui/fragments/footer.html" %}
+        </div> <!-- /container -->
+        {% endslimcontent %}
+
+        {% slimall %}
+        <script src="js/lib/jquery-ui-1.8.16.custom.min.js"></script>
+        <script src="js/lib/jquery.class.js"></script>
+        <script src="js/lib/bootstrap/bootstrap.js"></script>
+        <script src="js/lib/bootstrap/bootstrap-datepicker.js"></script>
+        <script src="js/lib/chosen/chosen.jquery.min.js"></script>
+        <script src="js/lib/artminster/search.js"></script>
+        {% endslimall %}
+
+        {% slimcontent "js" %}
+        {% if not settings.DEBUG and not request.user.is_staff and settings.GOOGLE_ANALYTICS_CODE %}
+            <!-- asynchronous google analytics -->
+            <script>
+             var _gaq = [['_setAccount', '{{settings.GOOGLE_ANALYTICS_CODE}}'], ['_trackPageview']];
+             (function(d, t) {
+              var g = d.createElement(t),
+                  s = d.getElementsByTagName(t)[0];
+              g.async = true;
+              g.src = '//www.google-analytics.com/ga.js';
+              s.parentNode.insertBefore(g, s);
+             })(document, 'script');
+            </script>
+        {% endif %}
+        {% endslimcontent %}
+        {% block extra_js %}{% endblock %}
+        {% block extra_body %}{% endblock %}
+        {% render_block "js" %}
+    </body>
+</html>

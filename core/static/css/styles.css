@@ -1,0 +1,33 @@
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+form .help-block {color: #999999;}
+.form-actions .btn {margin-right: 6px;}
+button.btn i {margin-right: 6px;}
+
+.navbar-search .dropdown-menu {
+	max-height: 400px;
+	overflow-y: scroll;
+	width: 228px;
+}
+
+.navbar-search .dropdown-menu .list-item {
+	padding-top: 6px;
+	padding-left: 56px;
+}
+
+form .required {
+	color: red;
+}
+
+.search-spinner {
+	position: absolute;
+	top: 4px;
+	right: 5px;
+	display: none;
+}
+
+form .controls ul { list-style: none; }
+form .controls ul input[type="checkbox"] { margin-top: 0px; }

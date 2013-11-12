@@ -1,0 +1,14 @@
+{% extends "ui/layouts/base.html" %}
+{% load common_tags %}
+
+{% block title %}Subscription successful{% endblock %}
+{% block page_title %}Subscription successful{% endblock %}
+
+{% block content %}
+	<p class="lead">
+		Congratulations, you've succesfully signed up to the <b>{{subscription.title}}</b> package. Please note that if paying via Paypal, if can take a couple of moments for us to receive confirmation that your payment was successful.
+	</p>
+	<p>
+		<a class="btn btn-primary" href="/">Take me home</a>
+	</p>
+{% endblock %}

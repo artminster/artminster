@@ -1,0 +1,26 @@
+{% extends "ui/layouts/base.html" %}
+{% load common_tags %}
+
+{% block title %}Signing up to the {{subscription.title}} package{% endblock %}
+{% block page_title %}Signing up to the {{subscription.title}} package{% endblock %}
+
+{% block content %}
+	{% if usersub.is_active %}
+		<p class="lead">
+			Ah, it looks like you're already signed up to this package! Perhaps you've taken a wrong turn somewhere?
+		</p>
+		<p>
+			<a class="btn btn-primary" href="/">Take me home</a>
+		</p>
+	{% else %}
+		<p class="lead">
+			Hi there, So you'd like to sign up to the {{subscription.title}} package? Fantastic, simply click the button below and we'll do the rest.
+		</p>
+		
+		{% if settings.PAYPAL_SANDBOX_MODE %}
+			{{form.sandbox}}
+		{% else %}
+			{{form.render}}
+		{% endif %}
+	{% endif %}
+{% endblock %}

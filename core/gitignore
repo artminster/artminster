@@ -1,0 +1,15 @@
+*~
+*.pyc
+*.chproj
+*.sublime-*
+.DS_Store
+.project
+.pydevproject
+.settings/org.eclipse.core.resources.prefs
+.svn
+uploads
+cms_media
+local_settings.py
+env
+cache-forever
+build

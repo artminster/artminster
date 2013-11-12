@@ -1,0 +1,24 @@
+{% extends "ui/layouts/base.html" %}
+{% load common_tags %}
+
+{% block title %}My Account{% endblock %}
+{% block page_title %}My Account{% endblock %}
+
+{% block content %}
+	<p class="lead">
+		You're currently subscribed to the <b>{{usersub.subscription.title}}</b> package. We hope you're enjoying it :)
+	</p>
+	
+	<table class="table table-striped table-condensed">
+		<tbody>
+			<tr>
+				<td>Current Subscription</td>
+				<td width="100%">{{usersub.subscription.title}} (<a href="#">change plan</a>)</td>
+			</tr>
+			<tr>
+				<td nowrap>X allowed each month</td>
+				<td>2 (0 remaining)</td>
+			</tr>
+		</tbody>
+	</table>
+{% endblock %}

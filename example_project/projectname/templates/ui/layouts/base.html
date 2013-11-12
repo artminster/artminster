@@ -1,0 +1,116 @@
+{% load cache django_static cms_tags sekizai_tags %}
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="not-ie" lang="en" xmlns:fb="http://ogp.me/ns/fb#"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<title>{% block title_outer %}{{settings.PROJECT_SITE_NAME}} | {% block head_title %}{% block title %}{% page_attribute title %}{% endblock %}{% endblock %}{% endblock %}</title>
+		<meta name="viewport" content="width=1024, maximum-scale=1.0">
+		<meta name="description" content="{% block site-meta-description %}{% page_attribute meta_description %}{% endblock %}" />
+		<meta name="keywords" content="{% block site-meta-keywords %}{% page_attribute meta_keywords %}{% endblock %}" />
+		<meta name="author" content="">
+		<meta name="robots" content="{% if settings.DEBUG %}nofollow{% else %}index, follow{% endif %}" />
+
+		{% block fb_meta %}
+			<meta property="og:title"       content="projectname" />
+			<meta property="og:description" content="projectname description" />
+			<meta property="og:type"        content="website" />
+			<meta property="og:image"       content="http://projectname.com/static/img/logo-square.png" />
+			<meta property="og:url"         content="http://www.facebook.com/projectname" />
+			<meta property="og:site_name"   content="projectname" />
+		{% endblock %}
+
+		{% slimall %}
+		<link rel="stylesheet" href="css/jasny-bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap-datepicker.css">
+		<link rel="stylesheet" href="css/chosen.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/theme.css">
+		<!--[if IE 7]>
+			<link href="css/font-awesome-ie7.min.css" rel="stylesheet">
+		<![endif]-->
+		{% endslimall %}
+
+		<link rel="canonical" href="http://{{request.META.HTTP_HOST}}{{request.path}}" />
+
+		<!-- IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		{% block extracss %}{% endblock %}
+		{% render_block "css" %}
+		<!-- fav and touch icons -->
+		<link rel="shortcut icon" href="{{STATIC_URL}}ico/favicon.ico">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{STATIC_URL}}ico/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{STATIC_URL}}ico/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="{{STATIC_URL}}ico/apple-touch-icon-57-precomposed.png">
+		{% block extra_head %}{% endblock %}
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<script type="text/javascript">var csrftoken = "{{ csrf_token }}";</script>
+	</head>
+
+	<body>
+		{% slimcontent %}
+		{% include "ui/fragments/header.html" %}
+
+		<div class="container">
+			{% block page_title_outer %}
+			<div class="page-header">
+			  <h1>{% block page_title %}{% endblock %}</h1>
+			</div>
+			{% endblock %}
+
+			{% block content_full_width %}{% endblock %}
+
+			<div class="row">
+				<div class="span9">
+					{% block content %}{% endblock %}
+				</div>
+
+				<div class="span3">
+					{% block sidebar %}{% endblock %}
+				</div>
+			</div>
+
+			{% include "ui/fragments/footer.html" %}
+		</div> <!-- /container -->
+		{% endslimcontent %}
+
+		{% slimall %}
+		<script src="js/lib/jquery.class.js"></script>
+		<script src="js/lib/jquery.cookie.js"></script>
+		<script src="js/lib/spin.min.js"></script>
+		<script src="js/lib/bootstrap-ajax.js"></script>
+		<script src="js/lib/bootstrap/bootstrap.min.js"></script>
+		<script src="js/lib/bootstrap/bootstrap-datepicker.js"></script>
+		<script src="js/lib/bootstrap/bootstrap-fileupload.js"></script>
+		<script src="js/lib/chosen/chosen.jquery.min.js"></script>
+		<script src="js/lib/artminster/search.js"></script>
+		<script src="js/lib/artminster/ajax.js"></script>
+		{% endslimall %}
+
+		{% slimcontent "js" %}
+		{% if not settings.DEBUG and not request.user.is_staff and settings.GOOGLE_ANALYTICS_CODE %}
+			<!-- asynchronous google analytics -->
+			<script>
+			 var _gaq = [['_setAccount', '{{settings.GOOGLE_ANALYTICS_CODE}}'], ['_trackPageview']];
+			 (function(d, t) {
+			  var g = d.createElement(t),
+				  s = d.getElementsByTagName(t)[0];
+			  g.async = true;
+			  g.src = '//www.google-analytics.com/ga.js';
+			  s.parentNode.insertBefore(g, s);
+			 })(document, 'script');
+			</script>
+		{% endif %}
+		{% endslimcontent %}
+		{% block extra_js %}{% endblock %}
+		{% block extra_body %}{% endblock %}
+		{% render_block "js" %}
+	</body>
+</html>

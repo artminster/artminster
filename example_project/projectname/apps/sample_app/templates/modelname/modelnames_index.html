@@ -1,0 +1,45 @@
+{% extends "ui/layouts/base.html" %}
+{% load pagination_tags %}
+
+{% block title %}modelnames{% endblock %}
+{% block page_title %}modelnames{% endblock %}
+
+{% block content %}
+	<p class="lead">Manage all of your active modelnames here.</p>
+
+	{% autopaginate items 10 %}
+
+	<table class="table table-striped table-condensed">
+		<thead>
+			<tr>
+				<th>modelname Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in items %}
+			<tr>
+				<td width="100%"><a href="{{item.get_absolute_url}}">{{item}}</a></td>
+				<td nowrap>
+					<a class="btn btn-mini btn-success" href="{% url modelname_update item.id %}">
+						<i class="icon-pencil icon-white"></i> Edit
+					</a>
+				</td>
+			</tr>
+			{% empty %}
+			<tr>
+				<td>No records could be found</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	
+	{% paginate %}
+
+{% endblock %}
+
+{% block sidebar %}
+
+	<h4>Quick links</h4>
+	<a href="{% url modelname_add %}" class="btn btn-mini btn-info">Add New ModelName</a>
+
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends "ui/layouts/base.html" %}
+{% load cache cms_tags fb_versions %}
+
+{% block page_title %}{% page_attribute title %}{% endblock %}
+
+{% block content %}
+	{% placeholder body %}
+{% endblock %}

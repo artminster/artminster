@@ -1,0 +1,17 @@
+{% extends "ui/layouts/base.html" %}
+
+{% block title %}{{modelname.title}}{% endblock %}
+{% block page_title %}{{modelname.title}}{% endblock %}
+
+{% block content %}
+	<p class="lead">{{modelname.executive_summary}}</p>
+
+{% endblock %}
+
+{% block sidebar %}
+
+	<h4>Quick links</h4>
+	<a href="{% url modelname_update modelname.id %}" class="btn btn-mini btn-info">Edit ModelName</a><br/>
+	<a href="{% url modelname_delete modelname.id %}" class="btn btn-mini btn-danger">Delete ModelName</a>
+
+{% endblock %}

@@ -1,0 +1,2 @@
+# Specific to this project (all other base ones, should be loaded via the 'artminster.core' app - see README)
+django # Adding this here (even though it has already been defined in the core/requirements.txt file and so will be ignored) because for the bootstrap script we need at-least one entry in this file. 
