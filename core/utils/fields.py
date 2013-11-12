@@ -21,9 +21,6 @@ qn = connection.ops.quote_name
 
 import re
 
-from artminster.core.utils.form_fields import MultiSelectFormField
-from artminster.core.utils.widgets import CustomCheckboxSelectMultiple
-
 uk_landline_re = re.compile(r'^[0]{1}[1-9]{1}[0-9]{9}$')
 uk_landline_no08or09_re = re.compile(r'^[0]{1}[1-7]{1}[0-9]{9}$')
 uk_mobile_re = re.compile(r'^(07)[0-9]{9}')

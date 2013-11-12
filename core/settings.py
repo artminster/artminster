@@ -91,7 +91,6 @@ INSTALLED_APPS = [
 
     # Utilities & Helper Apps
     'artminster.core',
-    'artminster.contrib.smart_selects',
     #'artminster.core.apps.profile',
     'tinymce',
     'south',

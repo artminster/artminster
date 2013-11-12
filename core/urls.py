@@ -62,7 +62,6 @@ if settings.DEBUG:
 
 # Pluggable apps
 urlpatterns += patterns('',
-	url(r'^chaining/', include('artminster.contrib.smart_selects.urls')),
 	url(r'^accounts/', include('allauth.urls')),
 	url(r'^', include('cms.urls')),
 )
