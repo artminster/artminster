@@ -25,8 +25,7 @@ if [ ! -d "${proj_path}" ]; then
 		mv projectname ${projectname};
 	
 		sed_cmd="s/projectname/${projectname}/g";
-		find . -type d \( -name artminster -o -name allauth -o -name .git \) -prune -o -name "*.py" -print -exec sed -i '' -e "$sed_cmd" {} +
-		find . -type d \( -name artminster -o -name allauth -o -name .git \) -prune -o -name "*.sh" -print -exec sed -i '' -e "$sed_cmd" {} +
+		find . -type d \( -name artminster -o -name allauth -o -name .git \) -prune -o -name "*" -print -exec sed -i '' -e "$sed_cmd" {} +
 	
 		git add .;
 		git commit -am 'initial commit';
