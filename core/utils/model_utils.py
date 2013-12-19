@@ -8,7 +8,7 @@ from django.utils.formats import get_format
 from django.utils.text import capfirst
 from django.utils import dateformat
 from django.template.defaultfilters import slugify
-import datetime, re, logging
+import datetime, re, logging, random, string, os
 
 try:
     from collections import namedtuple
@@ -106,3 +106,9 @@ def get_or_none(model, **kwargs):
         return model.objects.get(**kwargs)
     except model.DoesNotExist:
         return None		
+
+def get_upload_to(instance, path, filename):
+    name, ext = os.path.splitext(filename)
+    name = ''.join(random.choice(string.ascii_lowercase + string.digits) for x in range(20))
+    new_filename = '%s%s' % (name, ext.lower())
+    return os.path.join(path, new_filename)

@@ -10,8 +10,6 @@ from django.utils.functional import Promise
 from datetime import datetime
 from django.contrib import messages
 
-from artminster.core.utils.decorators import render_to
-
 import simplejson
 
 """
