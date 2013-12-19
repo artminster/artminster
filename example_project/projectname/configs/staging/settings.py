@@ -16,7 +16,7 @@ DATABASES = {
 
 # Project settings and active names
 PROJECT_SITE_DOMAIN = 'projectname.artminster.com'
-GOOGLE_MAPS_API_KEY = "AIzaSyBg7rZjToQyi9izk13QfLegTueVEuWxfa0"
+GOOGLE_MAPS_API_KEY = ""
 
 # Caching
 CACHE_BACKEND = 'johnny.backends.memcached://127.0.0.1:11211'
@@ -26,7 +26,7 @@ INTERNAL_IPS = ('0.0.0.0')
 
 # Email addresses
 MANAGERS = (
-    ('Benjamin Dell', 'ben@artminster.com'),
+    ('Nelson Monteior', 'nelson@artminster.com'),
 )
 
 # logging

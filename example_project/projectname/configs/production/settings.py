@@ -21,5 +21,5 @@ GOOGLE_MAPS_API_KEY = "AIzaSyBg7rZjToQyi9izk13QfLegTueVEuWxfa0"
 ADMINS = (('ARTMINSTER Dev', 'dev@artminster.com')),
 MANAGERS = ('ARTMINSTER Dev', 'dev@artminster.com'),
 
-PAYPAL_RECEIVER_EMAIL = "ben@artminster.com"
+PAYPAL_RECEIVER_EMAIL = ""
 PAYPAL_SANDBOX_MODE = False
