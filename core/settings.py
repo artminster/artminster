@@ -60,7 +60,7 @@ MIDDLEWARE_CLASSES = [
     'johnny.middleware.LocalStoreClearMiddleware',
     'johnny.middleware.QueryCacheMiddleware',
     'pagination.middleware.PaginationMiddleware',
-    'slimmer.middleware.CompressHtmlMiddleware',
+    #'slimmer.middleware.CompressHtmlMiddleware',
     #'cms.middleware.multilingual.MultilingualURLMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
